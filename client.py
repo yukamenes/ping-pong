@@ -3,14 +3,17 @@ import socket
 import json
 from threading import Thread
 
-print("hello")
-
 # ---ПУГАМЕ НАЛАШТУВАННЯ ---
 WIDTH, HEIGHT = 800, 600
 init()
 screen = display.set_mode((WIDTH, HEIGHT))
 clock = time.Clock()
 display.set_caption("Пінг-Понг")
+
+background_image = image.load("background.jpg") #!!!!!!
+background_image = transform.scale(background_image, 
+                                   (WIDTH, HEIGHT )) #!!!!!!
+
 # ---СЕРВЕР ---
 def connect_to_server():
     while True:
@@ -90,7 +93,8 @@ while True:
         continue  # Блокує гру після перемоги
 
     if game_state:
-        screen.fill((30, 30, 30))
+        #screen.fill((30, 30, 30))
+        screen.blit(background_image, (0,0))#!!!!!!!
         draw.rect(screen, (0, 255, 0), (20, game_state['paddles']['0'], 20, 100))
         draw.rect(screen, (255, 0, 255), (WIDTH - 40, game_state['paddles']['1'], 20, 100))
         draw.circle(screen, (255, 255, 255), (game_state['ball']['x'], game_state['ball']['y']), 10)
