@@ -3,6 +3,8 @@ import socket
 import json
 from threading import Thread
 
+print("hello")
+
 # ---ПУГАМЕ НАЛАШТУВАННЯ ---
 WIDTH, HEIGHT = 800, 600
 init()
